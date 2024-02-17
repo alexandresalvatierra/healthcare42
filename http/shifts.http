@@ -1,0 +1,14 @@
+### Variables 
+@apiurl = http://localhost:8000/api/shifts
+
+### Find All
+GET {{apiurl}} HTTP/1.1
+
+### Calculate Overlap
+POST {{apiurl}}/calculate-overlap HTTP/1.1
+Content-Type: application/json
+
+{
+  "shiftA": 1,
+  "shiftB": 2
+}

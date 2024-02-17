@@ -1,0 +1,11 @@
+### Variables 
+@apiurl = http://localhost:8000/api/nurses
+
+### Find All Remaining Spots
+GET {{apiurl}}/remaining-spots HTTP/1.1
+
+### Find All Jobs Availability
+GET {{apiurl}}/jobs-availability HTTP/1.1
+
+### Find All Jobs Recommendation
+GET {{apiurl}}/jobs-recommendation HTTP/1.1

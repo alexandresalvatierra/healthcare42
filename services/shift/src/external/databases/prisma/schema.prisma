@@ -1,0 +1,52 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Facilities {
+  facility_id       Int                 @id @default(autoincrement())
+  facility_name     String
+  Jobs              Jobs[]
+  QuestionOneShifts QuestionOneShifts[]
+}
+
+model Jobs {
+  job_id                     Int              @id @default(autoincrement())
+  facility_id                Int
+  nurse_type_needed          String
+  total_number_nurses_needed Int
+  facility                   Facilities       @relation(fields: [facility_id], references: [facility_id])
+  NurseHiredJobs             NurseHiredJobs[]
+}
+
+model Nurses {
+  nurse_id       Int              @id @default(autoincrement())
+  nurse_name     String
+  nurse_type     String
+  NurseHiredJobs NurseHiredJobs[]
+}
+
+model NurseHiredJobs {
+  job_id   Int
+  nurse_id Int
+
+  job   Jobs   @relation(fields: [job_id], references: [job_id])
+  nurse Nurses @relation(fields: [nurse_id], references: [nurse_id])
+
+  @@id([job_id, nurse_id])
+}
+
+model QuestionOneShifts {
+  shift_id    Int      @id @default(autoincrement())
+  facility_id Int
+  shift_date  DateTime @default(now()) @db.Date
+  start_time  DateTime @default(now()) @db.Time
+  end_time    DateTime @default(now()) @db.Time
+
+  facility Facilities @relation(fields: [facility_id], references: [facility_id])
+}
