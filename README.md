@@ -8,13 +8,6 @@
 
 > A simple PERN project related to managing shifts and matching nurses with available job positions, , using Node with Typescript, React with Typescript, PostgreSQL, Kong API Gateway and Docker. I hope you have as much fun as I was doing in this journey.
 
-## Docs
-
-If it doesn't bother you, see some documents below:
-
-- [System design](docs/0-design-system.md)
-- [Database design](docs/1-database-design.md)
-
 ## Manual Installation - Local Depelopment
 
 Clone the repo:
